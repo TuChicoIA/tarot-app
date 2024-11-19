@@ -1,5 +1,2 @@
-import '@/styles/globals.css'
-
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+// src/pages/app-config.js
+// QUITA la importación de globals.css si existe aquí
