@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const { datos_usuario, instrucciones } = req.body;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo", // Cambiar a gpt-3.5-turbo para respuesta más rápida
+      model: "gpt-4", // Cambiar a gpt-3.5-turbo para respuesta más rápida
       messages: [
         {
           role: "system",
