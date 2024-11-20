@@ -114,7 +114,7 @@ const TarotApp = () => {
         `
       };
 
-      const respuesta = await fetch('/api/lectura-tarot', {
+      const respuesta = await fetch('/api/lectura', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
