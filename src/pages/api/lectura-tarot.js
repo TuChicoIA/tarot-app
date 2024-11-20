@@ -1,8 +1,8 @@
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+export const config = {
+  maxDuration: 60, // Aumentar el tiempo máximo a 60 segundos
+};
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -10,10 +10,15 @@ export default async function handler(req, res) {
   }
 
   try {
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+      timeout: 30000, // timeout de 30 segundos
+    });
+
     const { datos_usuario, instrucciones } = req.body;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo", // Cambiar a gpt-3.5-turbo para respuesta más rápida
       messages: [
         {
           role: "system",
@@ -24,25 +29,16 @@ export default async function handler(req, res) {
           content: instrucciones
         }
       ],
-      temperature: 0.9,
-      max_tokens: 2000
+      temperature: 0.7,
+      max_tokens: 1000 // Reducir tokens para respuesta más rápida
     });
 
-    const lecturaGenerada = completion.choices[0].message.content;
-    
-    try {
-      const lecturaJSON = JSON.parse(lecturaGenerada);
-      return res.status(200).json(lecturaJSON);
-    } catch (parseError) {
-      console.error('Error al parsear la respuesta:', parseError);
-      return res.status(500).json({ 
-        error: 'Error al procesar la lectura',
-        details: 'La respuesta no tiene el formato esperado'
-      });
-    }
+    return res.status(200).json({ 
+      lectura: completion.choices[0].message.content
+    });
 
   } catch (error) {
-    console.error('Error en la generación de la lectura:', error);
+    console.error('Error:', error);
     return res.status(500).json({ 
       error: 'Error al generar la lectura',
       details: error.message 
