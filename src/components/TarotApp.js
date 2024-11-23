@@ -45,75 +45,75 @@ const TarotApp = () => {
   const generarLecturaCompleta = async () => {
     try {
       const prompt = {
-        tipo_consulta: "lectura_tarot_completa",
-        datos_usuario: {
-          nombre: formData.nombre,
-          fecha_nacimiento: formData.fechaNacimiento,
-          color_favorito: formData.colorFavorito.toLowerCase()
-        },
-        instrucciones: `
-          Eres una experta tarotista. Genera una lectura completamente personalizada.
+ tipo_consulta: "lectura_tarot_completa",
+ datos_usuario: {
+   nombre: formData.nombre,
+   fecha_nacimiento: formData.fechaNacimiento,
+   color_favorito: formData.colorFavorito.toLowerCase()
+ },
+ instrucciones: `
+   Eres una experta tarotista. Genera una lectura completamente personalizada.
 
-          REQUERIMIENTOS:
+   REQUERIMIENTOS:
 
-          1. ANÁLISIS ASTROLÓGICO:
-          - Determina e interpreta el signo zodiacal basado en la fecha ${formData.fechaNacimiento}
-          - Identifica y explica su elemento (Fuego, Tierra, Aire, Agua)
-          - Describe características y energías dominantes
-          - Conexión con el momento actual
+   1. ANÁLISIS ASTROLÓGICO:
+   - Determina e interpreta el signo zodiacal basado en la fecha ${formData.fechaNacimiento}
+   - Identifica y explica su elemento (Fuego, Tierra, Aire, Agua)
+   - Describe características y energías dominantes
+   - Conexión con el momento actual
 
-          2. SELECCIÓN DE CARTAS:
-          - Elige dos cartas del mazo completo de 78 cartas del Tarot Rider-Waite
-          - Una carta para el presente
-          - Una carta para el futuro
-          - Especifica si cada carta está en posición normal o invertida
-          - Interpretación profunda y detallada de cada carta
-          - Símbolos relevantes y su significado
-          - Conexión con el consultante
+   2. SELECCIÓN DE CARTAS:
+   - Elige dos cartas del mazo completo de 78 cartas del Tarot Rider-Waite
+   - Una carta para el presente
+   - Una carta para el futuro
+   - Especifica si cada carta está en posición normal o invertida
+   - Interpretación profunda y detallada de cada carta
+   - Símbolos relevantes y su significado
+   - Conexión con el consultante
 
-          3. ANÁLISIS DEL COLOR:
-          - Interpretación profunda del color ${formData.colorFavorito.toLowerCase()}
-          - Significado espiritual y energético
-          - Conexión con las cartas seleccionadas
-          - Influencia en el camino del consultante
+   3. ANÁLISIS DEL COLOR:
+   - Interpretación profunda del color ${formData.colorFavorito.toLowerCase()}
+   - Significado espiritual y energético
+   - Conexión con las cartas seleccionadas
+   - Influencia en el camino del consultante
 
-          4. SÍNTESIS E INTEGRACIÓN:
-          - Conecta todos los elementos entre sí
-          - Relaciona las cartas con el signo zodiacal
-          - Vincula el color con la interpretación general
-          - Ofrece una visión holística de la lectura
+   4. SÍNTESIS E INTEGRACIÓN:
+   - Conecta todos los elementos entre sí
+   - Relaciona las cartas con el signo zodiacal
+   - Vincula el color con la interpretación general
+   - Ofrece una visión holística de la lectura
 
-          FORMAT0 DE RESPUESTA REQUERIDO:
-          {
-            "signo": {
-              "nombre": "nombre del signo",
-              "elemento": "elemento del signo",
-              "caracteristica": "características principales"
-            },
-            "cartaPresente": {
-              "nombre": "nombre de la carta",
-              "posicion": "normal o invertida",
-              "significadoPresente": "interpretación detallada"
-            },
-            "cartaFuturo": {
-              "nombre": "nombre de la carta",
-              "posicion": "normal o invertida",
-              "significadoFuturo": "interpretación detallada"
-            },
-            "colorInterpretacion": {
-              "energia": "Tu color favorito, [color], simboliza...",
-              "mensaje": "mensaje completo que puede incluir referencias al color"
-            }
-          }
+   FORMAT0 DE RESPUESTA REQUERIDO:
+   {
+     "signo": {
+       "nombre": "nombre del signo",
+       "elemento": "elemento del signo",
+       "caracteristica": "características principales"
+     },
+     "cartaPresente": {
+       "nombre": "nombre de la carta",
+       "posicion": "normal o invertida",
+       "significadoPresente": "interpretación detallada"
+     },
+     "cartaFuturo": {
+       "nombre": "nombre de la carta",
+       "posicion": "normal o invertida",
+       "significadoFuturo": "interpretación detallada"
+     },
+     "colorInterpretacion": {
+       "energia": "Tu color favorito, [color], simboliza...",
+       "mensaje": "mensaje completo que puede incluir referencias al color"
+     }
+   }
 
-          CONSIDERACIONES:
-          - Cada interpretación debe ser única y específica
-          - Evita generalidades y frases hechas
-          - Usa lenguaje claro pero místico
-          - Mantén un tono empático y personal
-          - Proporciona detalles específicos y relevantes
-        `
-      };
+   CONSIDERACIONES:
+   - Cada interpretación debe ser única y específica
+   - Evita generalidades y frases hechas
+   - Usa lenguaje claro pero místico
+   - Mantén un tono empático y personal
+   - Proporciona detalles específicos y relevantes
+ `
+};
 
       const respuesta = await fetch('/api/lectura', {
         method: 'POST',
@@ -261,5 +261,3 @@ const TarotApp = () => {
 };
 
 export default TarotApp;
-```
-
