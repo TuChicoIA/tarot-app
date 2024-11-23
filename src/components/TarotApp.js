@@ -235,9 +235,9 @@ const TarotApp = () => {
                     {lectura.cartaFuturo.significadoFuturo}
                   </p>
                   <p className="text-sm italic">
-                    Tu color favorito refleja {lectura.colorInterpretacion.energia} 
-                    y {lectura.colorInterpretacion.mensaje}.
-                  </p>
+  Tu color favorito, {formData.colorFavorito.toLowerCase()}, refleja {lectura.colorInterpretacion.energia} 
+  y {lectura.colorInterpretacion.mensaje}.
+</p>
                 </div>
 
                 <p className="italic text-center font-medium">
