@@ -1,3 +1,4 @@
+```javascript
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -41,14 +42,16 @@ const TarotApp = () => {
     }
   ];
 
-  const prompt = {
-  tipo_consulta: "lectura_tarot_completa",
-  datos_usuario: {
-    nombre: formData.nombre,
-    fecha_nacimiento: formData.fechaNacimiento,
-    color_favorito: formData.colorFavorito.toLowerCase() // Aquí convertimos a minúsculas
-  },
-  instrucciones: `
+  const generarLecturaCompleta = async () => {
+    try {
+      const prompt = {
+        tipo_consulta: "lectura_tarot_completa",
+        datos_usuario: {
+          nombre: formData.nombre,
+          fecha_nacimiento: formData.fechaNacimiento,
+          color_favorito: formData.colorFavorito.toLowerCase()
+        },
+        instrucciones: `
           Eres una experta tarotista. Genera una lectura completamente personalizada.
 
           REQUERIMIENTOS:
@@ -98,9 +101,9 @@ const TarotApp = () => {
               "significadoFuturo": "interpretación detallada"
             },
             "colorInterpretacion": {
-  "energia": "Tu color favorito, [color], simboliza...",
-  "mensaje": "mensaje completo que puede incluir referencias al color"
-}
+              "energia": "Tu color favorito, [color], simboliza...",
+              "mensaje": "mensaje completo que puede incluir referencias al color"
+            }
           }
 
           CONSIDERACIONES:
@@ -232,9 +235,9 @@ const TarotApp = () => {
                   <p className="mb-3 leading-relaxed">
                     {lectura.cartaFuturo.significadoFuturo}
                   </p>
-               <p className="text-sm italic">
-  {lectura.colorInterpretacion.energia} {lectura.colorInterpretacion.mensaje}
-</p>
+                  <p className="text-sm italic">
+                    {lectura.colorInterpretacion.energia} {lectura.colorInterpretacion.mensaje}
+                  </p>
                 </div>
 
                 <p className="italic text-center font-medium">
@@ -258,3 +261,5 @@ const TarotApp = () => {
 };
 
 export default TarotApp;
+```
+
