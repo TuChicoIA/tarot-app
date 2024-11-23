@@ -41,16 +41,14 @@ const TarotApp = () => {
     }
   ];
 
-  const generarLecturaCompleta = async () => {
-    try {
-      const prompt = {
-        tipo_consulta: "lectura_tarot_completa",
-        datos_usuario: {
-          nombre: formData.nombre,
-          fecha_nacimiento: formData.fechaNacimiento,
-          color_favorito: formData.colorFavorito
-        },
-        instrucciones: `
+  const prompt = {
+  tipo_consulta: "lectura_tarot_completa",
+  datos_usuario: {
+    nombre: formData.nombre,
+    fecha_nacimiento: formData.fechaNacimiento,
+    color_favorito: formData.colorFavorito.toLowerCase() // Aquí convertimos a minúsculas
+  },
+  instrucciones: `
           Eres una experta tarotista. Genera una lectura completamente personalizada.
 
           REQUERIMIENTOS:
@@ -71,7 +69,7 @@ const TarotApp = () => {
           - Conexión con el consultante
 
           3. ANÁLISIS DEL COLOR:
-          - Interpretación profunda del color ${formData.colorFavorito}
+          - Interpretación profunda del color ${formData.colorFavorito.toLowerCase()}
           - Significado espiritual y energético
           - Conexión con las cartas seleccionadas
           - Influencia en el camino del consultante
