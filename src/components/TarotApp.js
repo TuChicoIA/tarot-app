@@ -100,9 +100,9 @@ const TarotApp = () => {
               "significadoFuturo": "interpretación detallada"
             },
             "colorInterpretacion": {
-              "energia": "significado energético del color",
-              "mensaje": "mensaje específico del color"
-            }
+  "energia": "Tu color favorito, [color], simboliza...",
+  "mensaje": "mensaje completo que puede incluir referencias al color"
+}
           }
 
           CONSIDERACIONES:
@@ -234,9 +234,8 @@ const TarotApp = () => {
                   <p className="mb-3 leading-relaxed">
                     {lectura.cartaFuturo.significadoFuturo}
                   </p>
-                  <p className="text-sm italic">
-  Tu color favorito, {formData.colorFavorito.toLowerCase()}, refleja {lectura.colorInterpretacion.energia} 
-  y {lectura.colorInterpretacion.mensaje}.
+               <p className="text-sm italic">
+  {lectura.colorInterpretacion.energia} {lectura.colorInterpretacion.mensaje}
 </p>
                 </div>
 
